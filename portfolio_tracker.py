@@ -15,6 +15,25 @@ stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
 
 # !!!DEFINING RELEVANT FUNCTIONS!!!
 
+def file_from_portfolio(file):
+#This function reads from a file and writes a dictionary from it.
+#The file needs to have on each line the structure: title, name of the company, number of shares, purchase price, latest price
+#ONLY SEPARATED BY A COMMA
+	dictionary = {}
+	f = open(file,'r')
+	for line in f:
+		x = line.strip('\n').split(',')
+		dictionary[x[1]] = []
+		dictionary[x[1]].append(x[0])
+		dictionary[x[1]].append(x[1])
+		dictionary[x[1]].append(round(float(x[2]),2))
+		dictionary[x[1]].append(round(float(x[3]),2))
+		dictionary[x[1]].append(round(float(x[4]),2))
+		#print stocks[x[1]]
+	f.close()
+	return dictionary
+
+
 def show_portfolio(dict):
 #This works only for dictionary defined in such a way that for each key there is an array structured like this:
 #title, name of the company, number of shares, purchase price, latest price
@@ -29,7 +48,7 @@ def show_portfolio(dict):
 			dict[x][4],\
 			dict[x][2]*dict[x][4],\
 			str(round((-dict[x][3]+dict[x][4])/dict[x][3]*100,1))+'%'])
-		tot_sum += dict[x][2]*dict[x][4]
+		tot_latest += dict[x][2]*dict[x][4]
 	portfolio.add_row(['','','','','',''])
 	portfolio.add_row(['TOT','','','',tot_sum,'tot_gain'])
 	print portfolio

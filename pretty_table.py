@@ -26,20 +26,39 @@ from prettytable import PrettyTable
 #'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
 #'Facebook':["FB","Facebook",50,64.33,67.09]}
 
-stocks = {}
+#stocks = {}
+#f = open('stocks.txt','r')
+#for line in f:
+#	x = line.strip('\n').split(',')
+#	#print x
+#	stocks[x[1]] = []
+#	stocks[x[1]].append(x[0])
+#	stocks[x[1]].append(x[1])
+#	stocks[x[1]].append(round(float(x[2]),2))
+#	stocks[x[1]].append(round(float(x[3]),2))
+#	stocks[x[1]].append(round(float(x[4]),2))
+#	print stocks[x[1]]
+#f.close()
 
-f = open('stocks.txt','r')
-for line in f:
-	x = line.strip('\n').split(',')
-	#print x
-	stocks[x[1]] = []
-	stocks[x[1]].append(x[0])
-	stocks[x[1]].append(x[1])
-	stocks[x[1]].append(round(float(x[2]),2))
-	stocks[x[1]].append(round(float(x[3]),2))
-	stocks[x[1]].append(round(float(x[4]),2))
-	print stocks[x[1]]
-f.close()
+def file_from_portfolio(file):
+#This function reads from a file and writes a dictionary from it.
+#The file needs to have on each line the structure: title, name of the company, number of shares, purchase price, latest price
+#ONLY SEPARATED BY A COMMA
+	dictionary = {}
+	f = open(file,'r')
+	for line in f:
+		x = line.strip('\n').split(',')
+		dictionary[x[1]] = []
+		dictionary[x[1]].append(x[0])
+		dictionary[x[1]].append(x[1])
+		dictionary[x[1]].append(round(float(x[2]),2))
+		dictionary[x[1]].append(round(float(x[3]),2))
+		dictionary[x[1]].append(round(float(x[4]),2))
+		#print stocks[x[1]]
+	f.close()
+	return dictionary
+
+print file_from_portfolio('stocks.txt')
 
 def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
