@@ -28,7 +28,7 @@ from prettytable import PrettyTable
 
 f = open('stocks.txt',r)
 for line in f:
-	x = f.readline().split(,)
+	x = f.readline().split(',')
 	print x
 f.close()
 
