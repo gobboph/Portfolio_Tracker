@@ -77,7 +77,7 @@ def add_stock(dict):
 def del_stock(dict):
 #Function to delete stock from portfolio
 	del_stock = raw_input('Which company have you sold? (capitalize correctly, you have the table right in front of you) ')
-	if del_stock not in stocks:
+	if del_stock not in dict:
 		print 'You did not have that, moron, so I am shutting down now'
 		exit()
 	else:
