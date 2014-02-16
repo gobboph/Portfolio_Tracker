@@ -46,10 +46,10 @@ if UpDate == 'U':
 			exit()
 		stocks[new_stock]=[]
 		stocks[new_stock].append(new_symbol)
-		stock[new_stock].append(new_stock)
-		stock[new_stock].append(num_share)
-		stock[new_stock].append(purch_price)
-		stock[new_stock].append(latest_price)
+		stocks[new_stock].append(new_stock)
+		stocks[new_stock].append(num_share)
+		stocks[new_stock].append(purch_price)
+		stocks[new_stock].append(latest_price)
 
 	elif AddDel == 'D':
 		del_stock = raw_input('Which company have you sold? (capitalize correctly, you have the table right in fron of you)')
