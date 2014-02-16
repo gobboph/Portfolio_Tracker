@@ -40,8 +40,8 @@ def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
 	portfolio.align['Company'] = 'l'
 	portfolio.padding_width = 1
-	tot_sum = 0
-	for x in stocks:
+	tot_latest = 0
+	for x in dict:
 		portfolio.add_row([dict[x][1]+' ('+dict[x][0]+')',\
 			dict[x][2],\
 			dict[x][3],\
@@ -50,7 +50,7 @@ def show_portfolio(dict):
 			str(round((-dict[x][3]+dict[x][4])/dict[x][3]*100,1))+'%'])
 		tot_latest += dict[x][2]*dict[x][4]
 	portfolio.add_row(['','','','','',''])
-	portfolio.add_row(['TOT','','','',tot_sum,'tot_gain'])
+	portfolio.add_row(['TOT','','','',tot_latest,'tot_gain'])
 	print portfolio
 
 def add_stock(dict):
@@ -87,7 +87,10 @@ def del_stock(dict):
 # !!!MAIN!!!
 
 def main():
-	stocks = dict_from_file('stocks.txt')
+	c=0
+	while c<1:
+		stocks = dict_from_file('stocks.txt')
+		c=3
 	print 'This is your portfolio now'
 	show_portfolio(stocks)
 	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
