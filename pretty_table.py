@@ -58,7 +58,9 @@ def file_from_portfolio(file):
 	f.close()
 	return dictionary
 
-print file_from_portfolio('stocks.txt')
+stocks = file_from_portfolio('stocks.txt')
+
+print stocks
 
 def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
