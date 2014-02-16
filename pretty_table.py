@@ -26,10 +26,19 @@ from prettytable import PrettyTable
 #'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
 #'Facebook':["FB","Facebook",50,64.33,67.09]}
 
+stocks = {}
+
 f = open('stocks.txt','r')
 for line in f:
-	x = line.split(',')
-	print x
+	x = line.strip('\n').split(',')
+	#print x
+	stocks[x[1]] = []
+	stocks[x[1]].append(x[0])
+	stocks[x[1]].append(x[1])
+	stocks[x[1]].append(round(float(x[2]),2))
+	stocks[x[1]].append(round(float(x[3]),2))
+	stocks[x[1]].append(round(float(x[4]),2))
+	print stocks[x[1]]
 f.close()
 
 def show_portfolio(dict):
