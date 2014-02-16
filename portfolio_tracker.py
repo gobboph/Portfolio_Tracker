@@ -36,23 +36,20 @@ if UpDate == 'U':
 		new_symbol = str(raw_input('And its new_symbol, please \n'))
 		num_share = raw_input('how many of those do you have? \n')
 		purch_price = raw_input('And how much did you pay for them? \n')
-		x='a'
-		count=1
-		while x!='Y' or x!='N'or count!=10:
-			x = raw_input('Is the price now the same as the when you bought it? (Y/N)').upper()
-			count+=1
-			if count==10:
-				print 'Well, too many times to try and press Y or N, idiot, I am shutting down'
+		x = raw_input('Is the price now the same as the when you bought it? (Y/N)').upper()
 		if x=='Y':
 			latest_price = purch_price
 		elif x=='N':
 			latest_price = raw_input('Then what is its price now?\n')
+		else:
+			print 'you should have been more precise in pressing y or n, now I am shutting down'
+			exit()
 		stocks[new_stock]=[]
-		stocks[new_stock].add(new_symbol)
-		stock[new_stock].add(new_stock)
-		stock[new_stock].add(num_share)
-		stock[new_stock].add(purch_price)
-		stock[new_stock].add(latest_price)
+		stocks[new_stock].append(new_symbol)
+		stock[new_stock].append(new_stock)
+		stock[new_stock].append(num_share)
+		stock[new_stock].append(purch_price)
+		stock[new_stock].append(latest_price)
 
 	elif AddDel == 'D':
 		del_stock = raw_input('Which company have you sold? (capitalize correctly, you have the table right in fron of you)')
