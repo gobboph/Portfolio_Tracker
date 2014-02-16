@@ -26,7 +26,7 @@ from prettytable import PrettyTable
 #'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
 #'Facebook':["FB","Facebook",50,64.33,67.09]}
 
-f = open('stocks.txt',r)
+f = open('stocks.txt','r')
 for line in f:
 	x = f.readline().split(',')
 	print x
