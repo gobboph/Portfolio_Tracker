@@ -10,28 +10,6 @@ stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
 '3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
 'Facebook':["FB","Facebook",50,64.33,67.09]}
 
-def main():
-	print 'This is your portfolio now'
-	show_portfolio(stocks)
-	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
-	if UpDate == 'U':
-		AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
-		if AddDel == 'A':
-			add_stock(stocks)
-		elif AddDel == 'D':
-			del_stock(stocks)
-		else:
-			print 'I did not undertsand, therefore exiting the program. Be more careful with typing, asshole.'
-			exit()
-	#print 'This is your updated portfolio'
-	#show_portfolio(stocks)
-
-
-#print 'This is your portfolio'
-#show_portfolio(stocks)
-while True:
-	main()
-
 
 
 
@@ -81,6 +59,28 @@ def del_stock(dict):
 	else:
 		del stocks[del_stock]
 
+
+def main():
+	print 'This is your portfolio now'
+	show_portfolio(stocks)
+	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
+	if UpDate == 'U':
+		AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
+		if AddDel == 'A':
+			add_stock(stocks)
+		elif AddDel == 'D':
+			del_stock(stocks)
+		else:
+			print 'I did not undertsand, therefore exiting the program. Be more careful with typing, asshole.'
+			exit()
+	#print 'This is your updated portfolio'
+	#show_portfolio(stocks)
+
+
+#print 'This is your portfolio'
+#show_portfolio(stocks)
+while True:
+	main()
 
 #stocks are order for: title, name of the company, number of shares, purchase price, latest price
 #stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
