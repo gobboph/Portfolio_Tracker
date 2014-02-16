@@ -21,10 +21,16 @@ from prettytable import PrettyTable
 #y.add_column("Annual Rainfall",[600.5, 1146.4, 1714.7, 619.5, 1214.8, 646.9, 869.4])
 #print y
 
-stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
-'Groupon':["GRPN","Groupon",100,10.46,10.51],\
-'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
-'Facebook':["FB","Facebook",50,64.33,67.09]}
+#stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
+#'Groupon':["GRPN","Groupon",100,10.46,10.51],\
+#'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
+#'Facebook':["FB","Facebook",50,64.33,67.09]}
+
+f = open('stocks.txt',r)
+for line in f:
+	x = f.readline().split(,)
+	print x
+f.close()
 
 def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
@@ -39,4 +45,4 @@ def show_portfolio(dict):
 			str(round((-dict[x][3]+dict[x][4])/dict[x][3]*100,1))+'%'])
 	print portfolio
 
-show_portfolio(stocks)
+#show_portfolio(stocks)
