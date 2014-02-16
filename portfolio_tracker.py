@@ -27,20 +27,20 @@ for x in stocks:
 print 'This is your portfolio at the moment'
 print portfolio
 
-UpDate = raw_input('If you want to update it press U, otherwise admire how nice it is.').upper()
+UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
 
 if UpDate == 'U':
-	AddDel = raw_input('Do you want to (A)dd or (D)elete any stock?').upper()
+	AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
 	if AddDel == 'A':
 		new_stock = str(raw_input('Write the name of the company you want to add \n'))
 		new_symbol = str(raw_input('And its new_symbol, please \n'))
-		num_share = raw_input('how many of those do you have? \n')
-		purch_price = raw_input('And how much did you pay for them? \n')
-		x = raw_input('Is the price now the same as the when you bought it? (Y/N)').upper()
+		num_share = int(raw_input('how many of those do you have? \n'))
+		purch_price = round(float(raw_input('And how much did you pay for them? \n')),1)
+		x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
 		if x=='Y':
 			latest_price = purch_price
 		elif x=='N':
-			latest_price = raw_input('Then what is its price now?\n')
+			latest_price = round(float(raw_input('Then what is its price now?\n')),1)
 		else:
 			print 'you should have been more precise in pressing y or n, now I am shutting down'
 			exit()
@@ -50,6 +50,11 @@ if UpDate == 'U':
 		stocks[new_stock].append(num_share)
 		stocks[new_stock].append(purch_price)
 		stocks[new_stock].append(latest_price)
+		#print stocks[new_stock][0]
+		#print stocks[new_stock][1]
+		#print stocks[new_stock][2]
+		#print stocks[new_stock][3]
+		#print stocks[new_stock][4]
 
 	elif AddDel == 'D':
 		del_stock = raw_input('Which company have you sold? (capitalize correctly, you have the table right in fron of you)')
