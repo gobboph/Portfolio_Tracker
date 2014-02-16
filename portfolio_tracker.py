@@ -12,7 +12,7 @@ stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
 
 def main():
 	print 'This is your portfolio now'
-show_portfolio(stocks)
+	show_portfolio(stocks)
 	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
 	if UpDate == 'U':
 		AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
