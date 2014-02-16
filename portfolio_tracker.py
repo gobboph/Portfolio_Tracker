@@ -5,17 +5,17 @@ from prettytable import PrettyTable
 
 
 #stocks are order for: title, name of the company, number of shares, purchase price, latest price
-stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
-'Groupon':["GRPN","Groupon",100,10.46,10.51],\
-'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
-'Facebook':["FB","Facebook",50,64.33,67.09]}
+#stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
+#'Groupon':["GRPN","Groupon",100,10.46,10.51],\
+#'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
+#'Facebook':["FB","Facebook",50,64.33,67.09]}
 
 
 
 
 # !!!DEFINING RELEVANT FUNCTIONS!!!
 
-def file_from_portfolio(file):
+def dict_from_file(file):
 #This function reads from a file and writes a dictionary from it.
 #The file needs to have on each line the structure: title, name of the company, number of shares, purchase price, latest price
 #ONLY SEPARATED BY A COMMA
@@ -88,6 +88,7 @@ def del_stock(dict):
 
 def main():
 	print 'This is your portfolio now'
+	stocks = dict_from_file('stocks.txt')
 	show_portfolio(stocks)
 	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
 	if UpDate == 'U':
