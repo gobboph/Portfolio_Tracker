@@ -21,6 +21,7 @@ def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
 	portfolio.align['Company'] = 'l'
 	portfolio.padding_width = 1
+	tot_sum = 0
 	for x in stocks:
 		portfolio.add_row([dict[x][1]+' ('+dict[x][0]+')',\
 			dict[x][2],\
@@ -28,6 +29,9 @@ def show_portfolio(dict):
 			dict[x][4],\
 			dict[x][2]*dict[x][4],\
 			str(round((-dict[x][3]+dict[x][4])/dict[x][3]*100,1))+'%'])
+		tot_sum += dict[x][2]*dict[x][4]
+	portfolio.add_row(['','','','','',''])
+	portfolio.add_row(['TOT','','','',tot_sum,'tot_gain'])
 	print portfolio
 
 def add_stock(dict):
