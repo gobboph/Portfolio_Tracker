@@ -81,14 +81,14 @@ def del_stock(dict):
 		print 'You did not have that, moron, so I am shutting down now'
 		exit()
 	else:
-		del stocks[del_stock]
+		del dict[del_stock]
 
 
 # !!!MAIN!!!
 
 def main():
-	print 'This is your portfolio now'
 	stocks = dict_from_file('stocks.txt')
+	print 'This is your portfolio now'
 	show_portfolio(stocks)
 	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
 	if UpDate == 'U':
