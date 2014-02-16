@@ -11,6 +11,8 @@ stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
 'Facebook':["FB","Facebook",50,64.33,67.09]}
 
 def main():
+	print 'This is your portfolio now'
+show_portfolio(stocks)
 	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
 	if UpDate == 'U':
 		AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
@@ -21,12 +23,12 @@ def main():
 		else:
 			print 'I did not undertsand, therefore exiting the program. Be more careful with typing, asshole.'
 			exit()
-	print 'This is your updated portfolio'
-	show_portfolio(stocks)
+	#print 'This is your updated portfolio'
+	#show_portfolio(stocks)
 
 
-print 'This is your portfolio'
-show_portfolio(stocks)
+#print 'This is your portfolio'
+#show_portfolio(stocks)
 while True:
 	main()
 
