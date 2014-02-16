@@ -56,6 +56,7 @@ def del_stock(dict):
 	del_stock = raw_input('Which company have you sold? (capitalize correctly, you have the table right in front of you) ')
 	if del_stock not in stocks:
 		print 'You did not have that, moron, so I am shutting down now'
+		exit()
 	else:
 		del stocks[del_stock]
 
