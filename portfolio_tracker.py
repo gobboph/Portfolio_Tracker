@@ -4,15 +4,6 @@ import string
 from prettytable import PrettyTable
 
 
-#stocks are order for: title, name of the company, number of shares, purchase price, latest price
-#stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
-#'Groupon':["GRPN","Groupon",100,10.46,10.51],\
-#'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
-#'Facebook':["FB","Facebook",50,64.33,67.09]}
-
-
-
-
 # !!!DEFINING RELEVANT FUNCTIONS!!!
 
 def dict_from_file(file):
@@ -53,25 +44,6 @@ def show_portfolio(dict):
 	portfolio.add_row(['TOT','','','',tot_latest,'tot_gain'])
 	print portfolio
 
-def write_new_line(file):
-#This function writes a new line in the file with the info for the portfolio. It will substitute add_stock
-	new_stock = str(raw_input('Company Name: '))
-	new_symbol = str(raw_input('Symbol: '))
-	num_share = raw_input('Number of stocks purchased: ')
-	purch_price = raw_input('Purchase Price: ')
-	#x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
-	#if x=='Y':
-	#	latest_price = purch_price
-	#elif x=='N':
-	#	latest_price = raw_input('Then what is its price now?\n')
-	#else:
-	#	print 'you should have been more precise in pressing y or n, now I am shutting down'
-	#	exit()
-	latest_price = raw_input('Latest Price: ')
-	f = open(file,'a')
-	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
-	f.close()
-
 def write_dict_to_file(dict,file):
 #This writes the dictionary to file the way I would like to.
 	f = open(file,'w')
@@ -86,14 +58,6 @@ def add_stock(dict):
 	new_symbol = str(raw_input('Symbol: '))
 	num_share = raw_input('Number of stocks purchased: ')
 	purch_price = raw_input('Purchase Price: ')
-	#x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
-	#if x=='Y':
-	#	latest_price = purch_price
-	#elif x=='N':
-	#	latest_price = raw_input('Then what is its price now?\n')
-	#else:
-	#	print 'you should have been more precise in pressing y or n, now I am shutting down'
-	#	exit()
 	latest_price = raw_input('Latest Price: ')
 	dict[new_stock]=[]
 	dict[new_stock].append(new_stock)
@@ -126,7 +90,6 @@ def main():
 			AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
 			if AddDel == 'A':
 				add_stock(stocks)
-#				write_new_line('stocks.txt')
 			elif AddDel == 'D':
 				del_stock(stocks)
 			else:
@@ -144,4 +107,24 @@ def main():
 #upload = raw_input('Which file do you want to upload? ')
 while True:
 	main()
+
+
+#stocks are order for: title, name of the company, number of shares, purchase price, latest price
+#stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
+#'Groupon':["GRPN","Groupon",100,10.46,10.51],\
+#'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
+#'Facebook':["FB","Facebook",50,64.33,67.09]}
+
+#Functions I do not seem to use at the moment
+
+def write_new_line(file):
+#This function writes a new line in the file with the info for the portfolio. It will substitute add_stock
+	new_stock = str(raw_input('Company Name: '))
+	new_symbol = str(raw_input('Symbol: '))
+	num_share = raw_input('Number of stocks purchased: ')
+	purch_price = raw_input('Purchase Price: ')
+	latest_price = raw_input('Latest Price: ')
+	f = open(file,'a')
+	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
+	f.close()
 
