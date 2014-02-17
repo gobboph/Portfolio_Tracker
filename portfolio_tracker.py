@@ -83,12 +83,13 @@ def del_stock(dict):
 			break
 
 def update_price(dict):
-	up_stock = raw_input('Company whose price you want to update: ')
-	if up_stock not in dict:
-		print 'Can you repeat? (company name, capitalize correctly) '
-	else:
-		dict(up_stock)[4] = round(float(raw_input('New price: ')),2)
-		break
+	while True:
+		up_stock = raw_input('Company whose price you want to update: ')
+		if up_stock not in dict:
+			print 'Can you repeat? (company name, capitalize correctly) '
+		else:
+			dict(up_stock)[4] = round(float(raw_input('New price: ')),2)
+			break
 
 
 # !!!MAIN!!!
