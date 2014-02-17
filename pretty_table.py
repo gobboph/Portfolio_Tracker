@@ -58,9 +58,9 @@ def file_from_portfolio(file):
 	f.close()
 	return dictionary
 
-#stocks = file_from_portfolio('stocks.txt')
+stocks = file_from_portfolio('stocks.txt')
 
-#print stocks
+print stocks
 
 def write_new_line(file):
 	new_stock = str(raw_input('Write the name of the company you want to add \n'))
@@ -78,7 +78,7 @@ def write_new_line(file):
 	f = open(file,'a')
 	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
 
-write_new_line('stocks2.txt')
+#write_new_line('stocks2.txt')
 
 def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])

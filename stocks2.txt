@@ -5,4 +5,5 @@ FB,Facebook,50,64.33,67.09avere1
 avere
 avere1
 1
-0
+0JP Morgan,JPM,30,22,22
+sdf,sdf,2,2,2
