@@ -43,7 +43,10 @@ def show_portfolio(dict):
 		tot_latest += dict[x][2]*dict[x][4]
 		tot_purchase += dict[x][2]*dict[x][3]
 	portfolio.add_row(['','','','','',''])
-	portfolio.add_row(['TOT','',tot_purchase,'',tot_latest,str(round((tot_latest-tot_purchase)/tot_purchase*100,2))+'%'])
+	if tot_purchase==0:
+		portfolio.add_row(['TOT','',tot_purchase,'',tot_latest,'-'])
+	else:
+		portfolio.add_row(['TOT','',tot_purchase,'',tot_latest,str(round((tot_latest-tot_purchase)/tot_purchase*100,2))+'%'])
 	print portfolio
 
 def write_dict_to_file(dict,file):
@@ -70,12 +73,14 @@ def add_stock(dict):
 
 def del_stock(dict):
 #Function to delete stock from portfolio
-	del_stock = raw_input('Which company have you sold? (capitalize correctly, you have the table right in front of you) ')
-	if del_stock not in dict:
-		print 'You did not have that, moron, so I am shutting down now'
-		exit()
-	else:
-		del dict[del_stock]
+	while True:
+		del_stock = raw_input('Which company have you sold? ')
+		if del_stock not in dict:
+			print 'can you repeat? (company name, capitalize correctly) '
+			#exit()
+		else:
+			del dict[del_stock]
+			break
 
 
 # !!!MAIN!!!
@@ -87,19 +92,14 @@ def main():
 		print ''
 		print 'This is your portfolio now'
 		show_portfolio(stocks)
-		UpDate = raw_input('If you want to update the portfolio press (U), otherwise you can (Q)uit or you can (C)hange the uploaded file. ').upper()
-		if UpDate == 'U':
-			AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
-			if AddDel == 'A':
-				add_stock(stocks)
-			elif AddDel == 'D':
-				del_stock(stocks)
-			else:
-				print 'I did not undertsand, therefore exiting the program. Be more careful with typing, asshole.'
-				exit()
+		UpDate = raw_input('(A)dd/(D)elete stock, (U)pload another file, (Q)uit. ').upper()
+		if UpDate == 'A':
+			add_stock(stocks)
+		elif UpDate == 'D':
+			del_stock(stocks)
 		elif UpDate == 'Q':
 			exit()
-		elif UpDate == 'C':
+		elif UpDate == 'U':
 			break
 		else:
 			print ''
