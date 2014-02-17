@@ -46,7 +46,7 @@ def show_portfolio(dict):
 	if tot_purchase==0:
 		portfolio.add_row(['TOT','',tot_purchase,'',tot_latest,'-'])
 	else:
-		portfolio.add_row(['TOT','',tot_purchase,'',tot_latest,str(round((tot_latest-tot_purchase)/tot_purchase*100,2))+'%'])
+		portfolio.add_row(['TOT','','','',tot_latest,str(round((tot_latest-tot_purchase)/tot_purchase*100,2))+'%'])
 	print portfolio
 
 def write_dict_to_file(dict,file):
