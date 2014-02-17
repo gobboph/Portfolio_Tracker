@@ -78,6 +78,7 @@ def write_new_line(file):
 	f = open(file,'a')
 	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
 
+write_new_line('stocks2.txt')
 
 def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
