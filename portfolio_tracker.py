@@ -74,7 +74,7 @@ def write_dict_to_file(dict,file):
 #This writes the dictionary to file the way I would like to.
 	f = open(file,'w')
 	for key in dict:
-		f.write(dict[key][1]+','+dict[key][0]+','+dict[key][2]+','+dict[key][3]+','+dict[key][4])
+		f.write(dict[key][1]+','+dict[key][0]+','+str(dict[key][2])+','+str(dict[key][3])+','+str(dict[key][4]))
 	f.close()
 
 
@@ -83,12 +83,12 @@ def add_stock(dict):
 	new_stock = str(raw_input('Write the name of the company you want to add \n'))
 	new_symbol = str(raw_input('And its new_symbol, please \n'))
 	num_share = int(raw_input('how many of those do you have? \n'))
-	purch_price = round(float(raw_input('And how much did you pay for them? \n')),1)
+	purch_price = round(float(raw_input('And how much did you pay for them? \n')),2)
 	x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
 	if x=='Y':
 		latest_price = purch_price
 	elif x=='N':
-		latest_price = round(float(raw_input('Then what is its price now?\n')),1)
+		latest_price = round(float(raw_input('Then what is its price now?\n')),2)
 	else:
 		print 'you should have been more precise in pressing y or n, now I am shutting down'
 		exit()
