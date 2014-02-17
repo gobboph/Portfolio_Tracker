@@ -118,6 +118,7 @@ def main():
 	upload = raw_input('Which file do you want to upload? ')
 	while True:
 		stocks = dict_from_file(upload)
+		print ''
 		print 'This is your portfolio now'
 		show_portfolio(stocks)
 		UpDate = raw_input('If you want to updaate the portfolio press U, otherwise you can (E)xit or you can (C)hange the uploaded file. ').upper()
@@ -136,6 +137,7 @@ def main():
 		elif UpDate == 'C':
 			break
 		else:
+			print ''
 			print 'Sorry, I did not understand what you want to do, here are your options again.'
 		write_dict_to_file(stocks,upload)
 
