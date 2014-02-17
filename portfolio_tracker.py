@@ -133,6 +133,10 @@ def main():
 				exit()
 		elif UpDate == 'E':
 			exit()
+		elif UpDate == 'C':
+			break
+		else:
+			print 'Sorry, I did not understand what you want to do, here are your options again.'
 		write_dict_to_file(stocks,upload)
 
 #upload = raw_input('Which file do you want to upload? ')

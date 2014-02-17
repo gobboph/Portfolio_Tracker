@@ -1,2 +1,1 @@
 Google,GOOG,100.0,1030.0,1035.0
-Microsoft,MSFT,23.4,23,24
