@@ -76,11 +76,19 @@ def del_stock(dict):
 	while True:
 		del_stock = raw_input('Which company have you sold? ')
 		if del_stock not in dict:
-			print 'can you repeat? (company name, capitalize correctly) '
+			print 'Can you repeat? (company name, capitalize correctly) '
 			#exit()
 		else:
 			del dict[del_stock]
 			break
+
+def update_price(dict):
+	up_stock = raw_input('Company whose price you want to update: ')
+	if up_stock not in dict:
+		print 'Can you repeat? (company name, capitalize correctly) '
+	else:
+		dict(up_stock)[4] = round(float(raw_input('New price: ')),2)
+		break
 
 
 # !!!MAIN!!!
@@ -92,13 +100,15 @@ def main():
 		print ''
 		print 'This is your portfolio now'
 		show_portfolio(stocks)
-		UpDate = raw_input('(A)dd/(D)elete stock, (U)pload another file, (Q)uit. ').upper()
+		UpDate = raw_input('(A)dd/(D)elete stock, update a (P)rice, (U)pload another file, (Q)uit. ').upper()
 		if UpDate == 'A':
 			add_stock(stocks)
 		elif UpDate == 'D':
 			del_stock(stocks)
 		elif UpDate == 'Q':
 			exit()
+		elif UpDate == 'P':
+			update_price(stocks)
 		elif UpDate == 'U':
 			break
 		else:
