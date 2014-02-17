@@ -121,7 +121,7 @@ def main():
 		print ''
 		print 'This is your portfolio now'
 		show_portfolio(stocks)
-		UpDate = raw_input('If you want to updaate the portfolio press U, otherwise you can (E)xit or you can (C)hange the uploaded file. ').upper()
+		UpDate = raw_input('If you want to update the portfolio press (U), otherwise you can (E)xit or you can (C)hange the uploaded file. ').upper()
 		if UpDate == 'U':
 			AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
 			if AddDel == 'A':
