@@ -116,7 +116,7 @@ def del_stock(dict):
 
 def main():
 	upload = raw_input('Which file do you want to upload? ')
-		while True:
+	while True:
 		stocks = dict_from_file(upload)
 		print 'This is your portfolio now'
 		show_portfolio(stocks)
