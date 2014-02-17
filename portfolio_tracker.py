@@ -88,7 +88,7 @@ def update_price(dict):
 		if up_stock not in dict:
 			print 'Can you repeat? (company name, capitalize correctly) '
 		else:
-			dict(up_stock)[4] = round(float(raw_input('New price: ')),2)
+			dict[up_stock][4] = round(float(raw_input('New price: ')),2)
 			break
 
 
