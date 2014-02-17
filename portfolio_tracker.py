@@ -70,7 +70,8 @@ def write_new_line(file):
 	f = open(file,'a')
 	f.write(new_symbol+','+new_stock+','+num_share+','+purch_price+','+latest_price+'\n')
 
-def write_port_to_file(dict,file):
+def write_dict_to_file(dict,file):
+#This writes the dictionary to file the way I would like to.
 	f = open(file,'w')
 	for key in dict:
 		f.write(dict[key][1]+','+dict[key][0]+','+dict[key][2]+','+dict[key][3]+','+dict[key][4])
@@ -111,14 +112,16 @@ def del_stock(dict):
 # !!!MAIN!!!
 
 def main():
-	stocks = dict_from_file('stocks.txt')
+	upload = raw_input('Which file do you want to upload? ')
+	stocks = dict_from_file(upload)
 	print 'This is your portfolio now'
 	show_portfolio(stocks)
 	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
 	if UpDate == 'U':
 		AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
 		if AddDel == 'A':
-			write_new_line('stocks.txt')
+			add_stock(stocks)
+#			write_new_line('stocks.txt')
 		elif AddDel == 'D':
 			del_stock(stocks)
 		else:
@@ -126,6 +129,7 @@ def main():
 			exit()
 	elif UpDate == 'E':
 		exit()
+	write_dict_to_file(stocks,upload)
 
 while True:
 	main()
