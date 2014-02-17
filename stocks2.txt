@@ -1,4 +1,8 @@
 GOOG,Google,100,1134.18,1202.80
 GRPN,Groupon,100,10.46,10.51
 DDD,3D Systems Corporation,50,66.91,73.83
-FB,Facebook,50,64.33,67.09
+FB,Facebook,50,64.33,67.09avere1
+avere
+avere1
+1
+0

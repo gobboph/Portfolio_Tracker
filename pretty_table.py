@@ -62,9 +62,22 @@ def file_from_portfolio(file):
 
 #print stocks
 
-f = open('stocks.txt','w')
-f.write('avere')
-f.close()
+def write_new_line(file):
+	new_stock = str(raw_input('Write the name of the company you want to add \n'))
+	new_symbol = str(raw_input('And its new_symbol, please \n'))
+	num_share = raw_input('how many of those do you have? \n')
+	purch_price = raw_input('And how much did you pay for them? \n')
+	x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
+	if x=='Y':
+		latest_price = purch_price
+	elif x=='N':
+		latest_price = raw_input('Then what is its price now?\n')
+	else:
+		print 'you should have been more precise in pressing y or n, now I am shutting down'
+		exit()
+	f = open(file,'a')
+	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
+
 
 def show_portfolio(dict):
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
