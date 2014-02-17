@@ -23,12 +23,12 @@ def dict_from_file(file):
 	f = open(file,'r')
 	for line in f:
 		x = line.strip('\n').split(',')
-		dictionary[x[1]] = []
-		dictionary[x[1]].append(x[0])
-		dictionary[x[1]].append(x[1])
-		dictionary[x[1]].append(round(float(x[2]),2))
-		dictionary[x[1]].append(round(float(x[3]),2))
-		dictionary[x[1]].append(round(float(x[4]),2))
+		dictionary[x[0]] = []
+		dictionary[x[0]].append(x[0])
+		dictionary[x[0]].append(x[1])
+		dictionary[x[0]].append(round(float(x[2]),1))
+		dictionary[x[0]].append(round(float(x[3]),2))
+		dictionary[x[0]].append(round(float(x[4]),2))
 		#print stocks[x[1]]
 	f.close()
 	return dictionary
@@ -42,12 +42,12 @@ def show_portfolio(dict):
 	portfolio.padding_width = 1
 	tot_latest = 0
 	for x in dict:
-		portfolio.add_row([dict[x][1]+' ('+dict[x][0]+')',\
+		portfolio.add_row([dict[x][0]+' ('+dict[x][1]+')',\
 			dict[x][2],\
 			dict[x][3],\
 			dict[x][4],\
 			dict[x][2]*dict[x][4],\
-			str(round((-dict[x][3]+dict[x][4])/dict[x][3]*100,1))+'%'])
+			str(round((-dict[x][3]+dict[x][4])/dict[x][3]*100,2))+'%'])
 		tot_latest += dict[x][2]*dict[x][4]
 	portfolio.add_row(['','','','','',''])
 	portfolio.add_row(['TOT','','','',tot_latest,'tot_gain'])
@@ -55,46 +55,49 @@ def show_portfolio(dict):
 
 def write_new_line(file):
 #This function writes a new line in the file with the info for the portfolio. It will substitute add_stock
-	new_stock = str(raw_input('Write the name of the company you want to add \n'))
-	new_symbol = str(raw_input('And its new_symbol, please \n'))
-	num_share = raw_input('how many of those do you have? \n')
-	purch_price = raw_input('And how much did you pay for them? \n')
-	x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
-	if x=='Y':
-		latest_price = purch_price
-	elif x=='N':
-		latest_price = raw_input('Then what is its price now?\n')
-	else:
-		print 'you should have been more precise in pressing y or n, now I am shutting down'
-		exit()
+	new_stock = str(raw_input('Company Name: '))
+	new_symbol = str(raw_input('Symbol: '))
+	num_share = raw_input('Number of stocks purchased: ')
+	purch_price = raw_input('Purchase Price: ')
+	#x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
+	#if x=='Y':
+	#	latest_price = purch_price
+	#elif x=='N':
+	#	latest_price = raw_input('Then what is its price now?\n')
+	#else:
+	#	print 'you should have been more precise in pressing y or n, now I am shutting down'
+	#	exit()
+	latest_price = raw_input('Latest Price: ')
 	f = open(file,'a')
-	f.write(new_symbol+','+new_stock+','+num_share+','+purch_price+','+latest_price+'\n')
+	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
+	f.close()
 
 def write_dict_to_file(dict,file):
 #This writes the dictionary to file the way I would like to.
 	f = open(file,'w')
 	for key in dict:
-		f.write(dict[key][1]+','+dict[key][0]+','+str(dict[key][2])+','+str(dict[key][3])+','+str(dict[key][4]))
+		f.write(dict[key][0]+','+dict[key][1]+','+str(dict[key][2])+','+str(dict[key][3])+','+str(dict[key][4])+'\n')
 	f.close()
 
 
 def add_stock(dict):
 #Function to add a stock to portfolio, work with the same dictionary structure as above
-	new_stock = str(raw_input('Write the name of the company you want to add \n'))
-	new_symbol = str(raw_input('And its new_symbol, please \n'))
-	num_share = int(raw_input('how many of those do you have? \n'))
-	purch_price = round(float(raw_input('And how much did you pay for them? \n')),2)
-	x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
-	if x=='Y':
-		latest_price = purch_price
-	elif x=='N':
-		latest_price = round(float(raw_input('Then what is its price now?\n')),2)
-	else:
-		print 'you should have been more precise in pressing y or n, now I am shutting down'
-		exit()
+	new_stock = str(raw_input('Company Name: '))
+	new_symbol = str(raw_input('Symbol: '))
+	num_share = raw_input('Number of stocks purchased: ')
+	purch_price = raw_input('Purchase Price: ')
+	#x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
+	#if x=='Y':
+	#	latest_price = purch_price
+	#elif x=='N':
+	#	latest_price = raw_input('Then what is its price now?\n')
+	#else:
+	#	print 'you should have been more precise in pressing y or n, now I am shutting down'
+	#	exit()
+	latest_price = raw_input('Latest Price: ')
 	dict[new_stock]=[]
-	dict[new_stock].append(new_symbol)
 	dict[new_stock].append(new_stock)
+	dict[new_stock].append(new_symbol)
 	dict[new_stock].append(num_share)
 	dict[new_stock].append(purch_price)
 	dict[new_stock].append(latest_price)
@@ -111,8 +114,7 @@ def del_stock(dict):
 
 # !!!MAIN!!!
 
-def main():
-	upload = raw_input('Which file do you want to upload? ')
+def main(upload):
 	stocks = dict_from_file(upload)
 	print 'This is your portfolio now'
 	show_portfolio(stocks)
@@ -131,6 +133,7 @@ def main():
 		exit()
 	write_dict_to_file(stocks,upload)
 
+upload = raw_input('Which file do you want to upload? ')
 while True:
-	main()
+	main(upload)
 
