@@ -53,6 +53,23 @@ def show_portfolio(dict):
 	portfolio.add_row(['TOT','','','',tot_latest,'tot_gain'])
 	print portfolio
 
+def write_new_line(file):
+#This function writes a new line in the file with the info for the portfolio. It will substitute add_stock
+	new_stock = str(raw_input('Write the name of the company you want to add \n'))
+	new_symbol = str(raw_input('And its new_symbol, please \n'))
+	num_share = raw_input('how many of those do you have? \n')
+	purch_price = raw_input('And how much did you pay for them? \n')
+	x = raw_input('Is the price now the same as the when you bought it? (Y/N) ').upper()
+	if x=='Y':
+		latest_price = purch_price
+	elif x=='N':
+		latest_price = raw_input('Then what is its price now?\n')
+	else:
+		print 'you should have been more precise in pressing y or n, now I am shutting down'
+		exit()
+	f = open(file,'a')
+	f.write(new_symbol+','+new_stock+','+num_share+','+purch_price+','+latest_price+'\n')
+
 def add_stock(dict):
 #Function to add a stock to portfolio, work with the same dictionary structure as above
 	new_stock = str(raw_input('Write the name of the company you want to add \n'))
@@ -87,17 +104,14 @@ def del_stock(dict):
 # !!!MAIN!!!
 
 def main():
-	c=0
-	while c<1:
-		stocks = dict_from_file('stocks.txt')
-		c=3
+	stocks = dict_from_file('stocks.txt')
 	print 'This is your portfolio now'
 	show_portfolio(stocks)
 	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
 	if UpDate == 'U':
 		AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
 		if AddDel == 'A':
-			add_stock(stocks)
+			write_new_line('stocks.txt')
 		elif AddDel == 'D':
 			del_stock(stocks)
 		else:
