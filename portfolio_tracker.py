@@ -32,6 +32,7 @@ def show_portfolio(dict):
 	portfolio.align['Company'] = 'l'
 	portfolio.padding_width = 1
 	tot_latest = 0
+	tot_purchase = 0
 	for x in dict:
 		portfolio.add_row([dict[x][0]+' ('+dict[x][1]+')',\
 			dict[x][2],\
@@ -40,8 +41,9 @@ def show_portfolio(dict):
 			dict[x][2]*dict[x][4],\
 			str(round((-dict[x][3]+dict[x][4])/dict[x][3]*100,2))+'%'])
 		tot_latest += dict[x][2]*dict[x][4]
+		tot_purchase += dict[x][2]*dict[x][3]
 	portfolio.add_row(['','','','','',''])
-	portfolio.add_row(['TOT','','','',tot_latest,'tot_gain'])
+	portfolio.add_row(['TOT','',tot_purchase,'',tot_latest,str(round((tot_latest-tot_purchase)/tot_purchase*100,2))+'%'])
 	print portfolio
 
 def write_dict_to_file(dict,file):
@@ -85,7 +87,7 @@ def main():
 		print ''
 		print 'This is your portfolio now'
 		show_portfolio(stocks)
-		UpDate = raw_input('If you want to update the portfolio press (U), otherwise you can (E)xit or you can (C)hange the uploaded file. ').upper()
+		UpDate = raw_input('If you want to update the portfolio press (U), otherwise you can (Q)uit or you can (C)hange the uploaded file. ').upper()
 		if UpDate == 'U':
 			AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
 			if AddDel == 'A':
@@ -95,7 +97,7 @@ def main():
 			else:
 				print 'I did not undertsand, therefore exiting the program. Be more careful with typing, asshole.'
 				exit()
-		elif UpDate == 'E':
+		elif UpDate == 'Q':
 			exit()
 		elif UpDate == 'C':
 			break

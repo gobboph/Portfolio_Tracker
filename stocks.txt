@@ -1,4 +1,4 @@
-Google,GOOG,100.0,1134.18,1202.8
+Google,GOOG,10.0,1134.18,1202.8
 Facebook,FB,50.0,64.33,67.09
-Groupon,GRPN,100.0,10.46,10.51
+Groupon,GRPN,50.0,10.46,10.93
 3D Systems Corporation,DDD,50.0,66.91,73.83
