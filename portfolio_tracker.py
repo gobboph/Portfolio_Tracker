@@ -114,26 +114,28 @@ def del_stock(dict):
 
 # !!!MAIN!!!
 
-def main(upload):
-	stocks = dict_from_file(upload)
-	print 'This is your portfolio now'
-	show_portfolio(stocks)
-	UpDate = raw_input('If you want to update it press U, otherwise you can (E)xit. ').upper()
-	if UpDate == 'U':
-		AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
-		if AddDel == 'A':
-			add_stock(stocks)
-#			write_new_line('stocks.txt')
-		elif AddDel == 'D':
-			del_stock(stocks)
-		else:
-			print 'I did not undertsand, therefore exiting the program. Be more careful with typing, asshole.'
+def main():
+	upload = raw_input('Which file do you want to upload? ')
+		while True:
+		stocks = dict_from_file(upload)
+		print 'This is your portfolio now'
+		show_portfolio(stocks)
+		UpDate = raw_input('If you want to updaate the portfolio press U, otherwise you can (E)xit or you can (C)hange the uploaded file. ').upper()
+		if UpDate == 'U':
+			AddDel = raw_input('Do you want to (A)dd or (D)elete any stock? ').upper()
+			if AddDel == 'A':
+				add_stock(stocks)
+#				write_new_line('stocks.txt')
+			elif AddDel == 'D':
+				del_stock(stocks)
+			else:
+				print 'I did not undertsand, therefore exiting the program. Be more careful with typing, asshole.'
+				exit()
+		elif UpDate == 'E':
 			exit()
-	elif UpDate == 'E':
-		exit()
-	write_dict_to_file(stocks,upload)
+		write_dict_to_file(stocks,upload)
 
-upload = raw_input('Which file do you want to upload? ')
+#upload = raw_input('Which file do you want to upload? ')
 while True:
-	main(upload)
+	main()
 
