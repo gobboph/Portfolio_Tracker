@@ -2,6 +2,7 @@
 
 import string
 from prettytable import PrettyTable
+import os
 import ystockquote
 
 
@@ -102,17 +103,25 @@ def create_file():
 
 def choice():
 	while True:
-		choice = raw_input('(W)rite a new file or (U)pload an existing one: ').upper()
+		choice = raw_input('(W)rite a new file, (U)pload an existing one or (Q)uit: ').upper()
 		if choice == 'U':
 			upload = raw_input('Which file do you want to upload? ')
-			break
+			if os.path.isfile(upload):
+				return upload
+				break
+			else:
+				print ''
+				print 'The file you requested does not exist, here are your options again '
+				print ''
 		elif choice == 'W':
 			upload = create_file()
+			return upload
 			break
+		elif choice == 'Q':
+			exit()
 		else:
 			print 'Please repeat what you want to do, here are the options again'
 			print ''
-	return upload
 
 
 
