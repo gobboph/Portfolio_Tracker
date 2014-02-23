@@ -96,8 +96,8 @@ def update_price(dict):
 def create_file():
 	print 'Creating a new text file...'
 	name = raw_input('name of file: ')+'.txt'
-	open(name,'w')
-	name.close()
+	new_file = open(name,'w')
+	new_file.close()
 	return name
 
 def choice():
