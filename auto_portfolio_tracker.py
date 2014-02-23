@@ -117,7 +117,7 @@ def delete_file():
 						print 'OK'
 					elif redo == 'H':
 						break
-					else
+					else:
 					print 'You fucked up and I am shutting down now...'
 					break
 			break
