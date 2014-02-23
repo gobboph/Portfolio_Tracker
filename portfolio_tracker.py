@@ -104,18 +104,21 @@ def main():
 		UpDate = raw_input('(A)dd/(D)elete stock, update a (P)rice, (U)pload another file, (Q)uit. ').upper()
 		if UpDate == 'A':
 			add_stock(stocks)
+			write_dict_to_file(stocks,upload)
 		elif UpDate == 'D':
 			del_stock(stocks)
-		elif UpDate == 'Q':
-			exit()
+			write_dict_to_file(stocks,upload)
 		elif UpDate == 'P':
 			update_price(stocks)
+			write_dict_to_file(stocks,upload)
 		elif UpDate == 'U':
 			break
+		elif UpDate == 'Q':
+			exit()
 		else:
 			print ''
 			print 'Sorry, I did not understand what you want to do, here are your options again.'
-		write_dict_to_file(stocks,upload)
+		#write_dict_to_file(stocks,upload)
 
 #upload = raw_input('Which file do you want to upload? ')
 while True:
