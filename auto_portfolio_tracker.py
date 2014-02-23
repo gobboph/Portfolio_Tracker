@@ -120,6 +120,7 @@ def choice():
 		elif choice == 'Q':
 			exit()
 		else:
+			print ''
 			print 'Please repeat what you want to do, here are the options again'
 			print ''
 
