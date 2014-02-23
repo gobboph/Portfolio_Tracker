@@ -111,7 +111,7 @@ def delete_file():
 				break
 			else:
 				print 'The file does not exists'
-				redo = raw_input('(R)e-type or (H)appy this way and get out?').upper()
+				redo = raw_input('(R)e-type or (H)appy this way and get out? ').upper()
 				if redo == 'R':
 					print 'OK'
 				elif redo == 'H':
@@ -125,7 +125,7 @@ def delete_file():
 		else:
 			print 'Please repeat what you want to do'
 
-def choice():
+def file_manager():
 	while True:
 		choice = raw_input('(W)rite a new file, (D)elete an existing one, (U)pload an existing one or (Q)uit: ').upper()
 		if choice == 'U':
@@ -162,24 +162,24 @@ def main():
 	#elif:
 	#	create_file()
 	#upload = raw_input('Which file do you want to upload? ')
-	upload = choice()
+	upload = file_manager()
 	while True:
 		stocks = dict_from_file(upload)
 		print ''
 		print 'This is your portfolio now'
 		print ''
 		show_portfolio(stocks)
-		UpDate = raw_input('(A)dd/(D)elete stock, update a (P)rice, (U)pload another file, (Q)uit. ').upper()
+		UpDate = raw_input('(A)dd/(D)elete stock, (U)pdate a price, (M)anage files, (Q)uit. ').upper()
 		if UpDate == 'A':
 			add_stock(stocks)
 			write_dict_to_file(stocks,upload)
 		elif UpDate == 'D':
 			del_stock(stocks)
 			write_dict_to_file(stocks,upload)
-		elif UpDate == 'P':
+		elif UpDate == 'U':
 			update_price(stocks)
 			write_dict_to_file(stocks,upload)
-		elif UpDate == 'U':
+		elif UpDate == 'M':
 			break
 		elif UpDate == 'Q':
 			exit()
