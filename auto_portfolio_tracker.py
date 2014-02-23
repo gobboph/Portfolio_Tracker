@@ -9,7 +9,7 @@ import ystockquote
 
 def dict_from_file(file):
 #This function reads from a file and writes a dictionary from it.
-#The file needs to have on each line the structure: title, name of the company, number of shares, purchase price, latest price
+#The file needs to have on each line the structure: name of the company, title, number of shares, purchase price, latest price
 #ONLY SEPARATED BY A COMMA
 	dictionary = {}
 	f = open(file,'r')
@@ -85,11 +85,11 @@ def del_stock(dict):
 
 def update_price(dict):
 	while True:
-		up_stock = raw_input('Symbol to update: ').upper()
+		up_stock = raw_input('Company to update: ')
 		if up_stock not in dict:
-			print 'Can you repeat? (symbol, not the name) '
+			print 'Can you repeat? (company name, capitalize correctly) '
 		else:
-			dict[up_stock][4] = ystockquote.get_bid_realtime(upstock) #round(float(raw_input('New price: ')),2)
+			dict[up_stock][4] = ystockquote.get_bid_realtime(dict[upstock][1]) #round(float(raw_input('New price: ')),2)
 			break
 
 
