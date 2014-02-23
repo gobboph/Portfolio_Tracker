@@ -114,7 +114,9 @@ def delete_file():
 				os.remove(file_name)
 				break
 			else:
+				print ''
 				print 'The file does not exists'
+				print ''
 				redo = raw_input('(R)e-type or (H)appy this way and get out? ').upper()
 				if redo == 'R':
 					print 'OK'
@@ -124,7 +126,9 @@ def delete_file():
 					print 'You fucked up and I am shutting down now...'
 					break
 		elif sure == 'N':
+			print ''
 			print 'OK, good we stopped you in time...'
+			print ''
 			break
 		else:
 			print 'Please repeat what you want to do'
@@ -150,7 +154,9 @@ def file_manager():
 			exit()
 		elif choice == 'D':
 			delete_file()
+			print ''
 			print 'File deleted, now what?'
+			print ''
 		else:
 			print ''
 			print 'Please repeat what you want to do, here are the options again'
