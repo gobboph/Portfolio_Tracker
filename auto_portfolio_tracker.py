@@ -101,6 +101,34 @@ def create_file():
 	new_file.close()
 	return name
 
+def delete_file():
+	while True:
+		sure = raw_input('Are you sure you want to delete the file? (Y/N) ').upper()
+		if sure == 'Y':
+			while True:
+				file_name = raw_input('Which file do you wnat to delete? ')
+				if os.path.isfile(file_name):
+					os.remove(file_name)
+					break
+				else:
+					print 'The file does not exists'
+					redo = raw_input('(R)e-type or (H)appy this way and get out?').upper()
+					if redo == 'R':
+						print 'OK'
+					elif redo == 'H':
+						break
+					else
+					print 'You fucked up and I am shutting down now...'
+					break
+			break
+		elif sure == 'N':
+			print 'OK, good we stopped you in time...'
+			break
+		else:
+			print 'Please repeat what you want to do'
+
+	print 'Deleting a file'
+
 def choice():
 	while True:
 		choice = raw_input('(W)rite a new file, (U)pload an existing one or (Q)uit: ').upper()
