@@ -129,7 +129,7 @@ def delete_file():
 
 def choice():
 	while True:
-		choice = raw_input('(W)rite a new file, (U)pload an existing one or (Q)uit: ').upper()
+		choice = raw_input('(W)rite a new file, (D)elete an existing one, (U)pload an existing one or (Q)uit: ').upper()
 		if choice == 'U':
 			upload = raw_input('Which file do you want to upload? ')
 			if os.path.isfile(upload):
@@ -145,6 +145,9 @@ def choice():
 			break
 		elif choice == 'Q':
 			exit()
+		elif choice == 'D':
+			delete_file()
+			print 'File deleted, now what?'
 		else:
 			print ''
 			print 'Please repeat what you want to do, here are the options again'
