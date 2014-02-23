@@ -63,8 +63,8 @@ def add_stock(dict):
 	new_stock = str(raw_input('Company Name: '))
 	new_symbol = str(raw_input('Symbol: '))
 	num_share = raw_input('Number of stocks purchased: ')
-	purch_price = raw_input('Purchase Price: ')
-	latest_price = raw_input('Latest Price: ')
+	purch_price = ystockquote.get_bid_realtime(new_symbol) #raw_input('Purchase Price: ')
+	latest_price = purch_price #raw_input('Latest Price: ')
 	dict[new_stock]=[]
 	dict[new_stock].append(new_stock)
 	dict[new_stock].append(new_symbol)
@@ -85,11 +85,11 @@ def del_stock(dict):
 
 def update_price(dict):
 	while True:
-		up_stock = raw_input('Company whose price you want to update: ')
+		up_stock = raw_input('Symbol to update: ').upper()
 		if up_stock not in dict:
-			print 'Can you repeat? (company name, capitalize correctly) '
+			print 'Can you repeat? (symbol, not the name) '
 		else:
-			dict[up_stock][4] = round(float(raw_input('New price: ')),2)
+			dict[up_stock][4] = ystockquote.get_bid_realtime(upstock) #round(float(raw_input('New price: ')),2)
 			break
 
 
