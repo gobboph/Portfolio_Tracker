@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+'''
+Note to self
+Problems: 1. if I mess up the symbol I am fucked since it does not find it, it write N/A in the file and then I can not even open the file to fix it;
+2. if I add a stock that I already have it deletes the previous entries and replace them with the new ones.
+
+'''
+
 import string
 from prettytable import PrettyTable
 import os

@@ -1,3 +1,2 @@
 Google,GOOG,5.0,1193.04,1193.04
 Facebook,FB,20.0,68.5,68.5
-Groupon,GRPN,30.0,8.04,8.04
