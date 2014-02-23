@@ -112,6 +112,8 @@ def delete_file():
 		if sure == 'Y' :
 			if os.path.isfile(file_name):
 				os.remove(file_name)
+				print 'File deleted'
+				print ''
 				break
 			else:
 				print ''
@@ -154,9 +156,6 @@ def file_manager():
 			exit()
 		elif choice == 'D':
 			delete_file()
-			print ''
-			print 'File deleted, now what?'
-			print ''
 		else:
 			print ''
 			print 'Please repeat what you want to do, here are the options again'
