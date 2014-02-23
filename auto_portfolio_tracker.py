@@ -118,8 +118,8 @@ def delete_file():
 					elif redo == 'H':
 						break
 					else:
-					print 'You fucked up and I am shutting down now...'
-					break
+						print 'You fucked up and I am shutting down now...'
+						break
 			break
 		elif sure == 'N':
 			print 'OK, good we stopped you in time...'
