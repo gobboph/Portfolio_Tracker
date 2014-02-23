@@ -73,6 +73,7 @@ def add_stock(dict):
 	dict[new_stock].append(purch_price)
 	dict[new_stock].append(latest_price)
 
+
 def del_stock(dict):
 #Function to delete stock from portfolio
 	while True:
@@ -84,6 +85,7 @@ def del_stock(dict):
 			del dict[del_stock]
 			break
 
+
 def update_price(dict):
 	while True:
 		up_stock = raw_input('Company to update: ')
@@ -94,12 +96,14 @@ def update_price(dict):
 			dict[up_stock][4] = ystockquote.get_bid_realtime(dict[up_stock][1]) #round(float(raw_input('New price: ')),2)
 			break
 
+
 def create_file():
 	print 'Creating a new text file...'
 	name = raw_input('name of file: ')+'.txt'
 	new_file = open(name,'a')
 	new_file.close()
 	return name
+
 
 def delete_file():
 	while True:
@@ -124,6 +128,7 @@ def delete_file():
 			break
 		else:
 			print 'Please repeat what you want to do'
+
 
 def file_manager():
 	while True:
@@ -156,12 +161,6 @@ def file_manager():
 # !!!MAIN!!!
 
 def main():
-	#choice = raw_input('(W)rite a new file or (U)pload an existing one: ').upper()
-	#if choice == 'U':
-	#	upload = raw_input('Which file do you want to upload? ')
-	#elif:
-	#	create_file()
-	#upload = raw_input('Which file do you want to upload? ')
 	upload = file_manager()
 	while True:
 		stocks = dict_from_file(upload)
@@ -186,9 +185,6 @@ def main():
 		else:
 			print ''
 			print 'Sorry, I did not understand what you want to do, here are your options again.'
-		#write_dict_to_file(stocks,upload)
-
-#upload = raw_input('Which file do you want to upload? ')
 while True:
 	main()
 
