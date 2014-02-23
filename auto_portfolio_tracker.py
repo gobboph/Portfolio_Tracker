@@ -127,8 +127,6 @@ def delete_file():
 		else:
 			print 'Please repeat what you want to do'
 
-	print 'Deleting a file'
-
 def choice():
 	while True:
 		choice = raw_input('(W)rite a new file, (U)pload an existing one or (Q)uit: ').upper()
