@@ -105,7 +105,7 @@ def delete_file():
 	while True:
 		file_name = raw_input('Which file do you want to delete? ')
 		sure = raw_input('Are you sure you want to delete the file? (Y/N) ').upper()
-		if sure == 'Y' 
+		if sure == 'Y' :
 			if os.path.isfile(file_name):
 				os.remove(file_name)
 				break
