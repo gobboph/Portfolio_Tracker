@@ -93,11 +93,22 @@ def update_price(dict):
 			dict[up_stock][4] = ystockquote.get_bid_realtime(dict[up_stock][1]) #round(float(raw_input('New price: ')),2)
 			break
 
+def create_file():
+	print 'Creating a new text file...'
+	name = raw_input('name of file: ')+'.txt'
+	open(name,'w')
+	name.close()
+
 
 # !!!MAIN!!!
 
 def main():
-	upload = raw_input('Which file do you want to upload? ')
+	choice = raw_input('(W)rite a new file or (U)pload an existing one: ').upper()
+	if choice == U:
+		upload = raw_input('Which file do you want to upload? ')
+	else:
+		create_file()
+	#upload = raw_input('Which file do you want to upload? ')
 	while True:
 		stocks = dict_from_file(upload)
 		print ''
@@ -127,12 +138,6 @@ def main():
 while True:
 	main()
 
-
-#stocks are order for: title, name of the company, number of shares, purchase price, latest price
-#stocks = {'Google':["GOOG","Google",100,1134.18,1202.80],\
-#'Groupon':["GRPN","Groupon",100,10.46,10.51],\
-#'3D Systems Corporation':["DDD","3D Systems Corporation",50,66.91,73.83],\
-#'Facebook':["FB","Facebook",50,64.33,67.09]}
 
 #Functions I do not seem to use at the moment
 

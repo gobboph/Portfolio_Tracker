@@ -1,3 +1,3 @@
-Google,GOOG,10.0,1134.18,1202.8
-Facebook,FB,50.0,64.33,68.50
-3D Systems Corporation,DDD,50.0,66.91,73.83
+Google,GOOG,5.0,1193.04,1193.04
+Facebook,FB,20.0,68.5,68.5
+Groupon,GRPN,30.0,8.04,8.04
