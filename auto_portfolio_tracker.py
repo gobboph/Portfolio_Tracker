@@ -98,17 +98,34 @@ def create_file():
 	name = raw_input('name of file: ')+'.txt'
 	open(name,'w')
 	name.close()
+	return name
+
+def choice():
+	while True:
+		choice = raw_input('(W)rite a new file or (U)pload an existing one: ').upper()
+		if choice == 'U':
+			upload = raw_input('Which file do you want to upload? ')
+			break
+		elif choice == 'W':
+			upload = create_file()
+			break
+		else:
+			print 'Please repeat what you want to do, here are the options again'
+			print ''
+	return upload
+
 
 
 # !!!MAIN!!!
 
 def main():
-	choice = raw_input('(W)rite a new file or (U)pload an existing one: ').upper()
-	if choice == U:
-		upload = raw_input('Which file do you want to upload? ')
-	else:
-		create_file()
+	#choice = raw_input('(W)rite a new file or (U)pload an existing one: ').upper()
+	#if choice == 'U':
+	#	upload = raw_input('Which file do you want to upload? ')
+	#elif:
+	#	create_file()
 	#upload = raw_input('Which file do you want to upload? ')
+	upload = choice()
 	while True:
 		stocks = dict_from_file(upload)
 		print ''
