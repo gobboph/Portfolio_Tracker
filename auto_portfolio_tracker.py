@@ -94,14 +94,17 @@ def del_stock(dict):
 
 
 def update_price(dict):
-	while True:
-		up_stock = raw_input('Company to update: ')
-		if up_stock not in dict:
-			print 'Can you repeat? (company name, capitalize correctly) '
-		else:
-			print 'Updating...'
-			dict[up_stock][4] = ystockquote.get_bid_realtime(dict[up_stock][1]) #round(float(raw_input('New price: ')),2)
-			break
+	#while True:
+	#	up_stock = raw_input('Company to update: ')
+	#	if up_stock not in dict:
+	#		print 'Can you repeat? (company name, capitalize correctly) '
+	#	else:
+	#		print 'Updating...'
+	#		dict[up_stock][4] = ystockquote.get_bid_realtime(dict[up_stock][1]) #round(float(raw_input('New price: ')),2)
+	#		break
+	print 'Updating portfolio...'
+	for key in dict:
+		dict[key][4] = ystockquote.get_bid_realtime(dict[up_stock][1])
 
 
 def create_file():
