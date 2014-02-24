@@ -104,7 +104,7 @@ def update_price(dict):
 	#		break
 	print 'Updating portfolio...'
 	for key in dict:
-		dict[key][4] = ystockquote.get_bid_realtime(dict[up_stock][1])
+		dict[key][4] = ystockquote.get_bid_realtime(dict[key][1])
 
 
 def create_file():

@@ -1,2 +1,2 @@
-Google,GOOG,5.0,1193.04,1193.04
-Facebook,FB,20.0,68.5,68.5
+Google,GOOG,5.0,1193.04,1215.63
+Facebook,FB,20.0,68.5,70.93
