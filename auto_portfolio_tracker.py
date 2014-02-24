@@ -184,7 +184,7 @@ def main():
 		print 'This is your portfolio now'
 		print ''
 		show_portfolio(stocks)
-		UpDate = raw_input('(A)dd/(D)elete stock, (U)pdate a price, (M)anage files, (Q)uit. ').upper()
+		UpDate = raw_input('(A)dd/(D)elete stock, (U)pdate portfolio, (M)anage files, (Q)uit. ').upper()
 		if UpDate == 'A':
 			add_stock(stocks)
 			write_dict_to_file(stocks,upload)
