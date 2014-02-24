@@ -28,7 +28,8 @@ def dict_from_file(file):
 		dictionary[x[0]].append(x[1])
 		dictionary[x[0]].append(round(float(x[2]),1))
 		dictionary[x[0]].append(round(float(x[3]),2))
-		dictionary[x[0]].append(round(float(x[4]),2))
+		#dictionary[x[0]].append(round(float(x[4]),2))
+		dictionary[x[0]].append(ystockquote.get_bid_realtime(x[1]))
 		#print stocks[x[1]]
 	f.close()
 	return dictionary
