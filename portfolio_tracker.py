@@ -121,7 +121,7 @@ def create_file():
 
 def delete_file():
 	while True:
-		file_name = raw_input('Which file do you want to delete? ')
+		file_name = raw_input('Which file do you want to delete? ')+'.txt'
 		sure = raw_input('Are you sure you want to delete the file? (Y/N) ').upper()
 		if sure == 'Y' :
 			if os.path.isfile(file_name):
@@ -157,22 +157,23 @@ def print_file():
 	pathname = os.path.dirname(sys.argv[0])
 	for file in os.listdir(os.path.abspath(pathname)):
 		if file.endswith(".txt"):
-			print file
+			print file.strip('.txt')
 
 
 def file_manager():
 	'''
 	Manages files
 	'''
+	print ''
 	while True:
-		print ''
+		#print ''
 		print 'These are your current stock files:'
-		print ''
+		#print ''
 		print_file()
-		print ''
+		#print ''
 		choice = raw_input('(W)rite a new file, (D)elete an existing one, (U)pload an existing one or (Q)uit: ').upper()
 		if choice == 'U':
-			upload = raw_input('Which file do you want to upload? ')
+			upload = raw_input('Which file do you want to upload? ')+'.txt'
 			if os.path.isfile(upload):
 				return upload
 				break
