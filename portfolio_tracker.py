@@ -10,15 +10,18 @@ Problems: 1. if I mess up the symbol I am fucked since it does not find it, it w
 import string
 from prettytable import PrettyTable
 import os
+import sys
 import ystockquote
 
 
 # !!!DEFINING RELEVANT FUNCTIONS!!!
 
 def dict_from_file(file):
-#This function reads from a file and writes a dictionary from it.
-#The file needs to have on each line the structure: name of the company, title, number of shares, purchase price, latest price
-#ONLY SEPARATED BY A COMMA
+	'''
+	This function reads from a file and writes a dictionary from it.
+	The file needs to have on each line the structure: name of the company, title, number of shares, purchase price, latest price
+	ONLY SEPARATED BY A COMMA
+	'''
 	dictionary = {}
 	f = open(file,'r')
 	for line in f:
@@ -36,8 +39,10 @@ def dict_from_file(file):
 
 
 def show_portfolio(dict):
-#This works only for dictionary defined in such a way that for each key there is an array structured like this:
-#title, name of the company, number of shares, purchase price, latest price
+	'''
+	This works only for dictionary defined in such a way that for each key there is an array structured like this:
+	title, name of the company, number of shares, purchase price, latest price
+	'''
 	portfolio = PrettyTable(['Company','Shares','Purchase','Latest','Value','Gain'])
 	portfolio.align['Company'] = 'l'
 	portfolio.padding_width = 1
@@ -60,7 +65,9 @@ def show_portfolio(dict):
 	print portfolio
 
 def write_dict_to_file(dict,file):
-#This writes the dictionary to file the way I would like to.
+	'''
+	Writes the dictionary to file the way I would like to.
+	'''
 	f = open(file,'w')
 	for key in dict:
 		f.write(dict[key][0]+','+dict[key][1]+','+str(dict[key][2])+','+str(dict[key][3])+','+str(dict[key][4])+'\n')
@@ -68,7 +75,9 @@ def write_dict_to_file(dict,file):
 
 
 def add_stock(dict):
-#Function to add a stock to portfolio, work with the same dictionary structure as above
+	'''
+	Function to add a stock to portfolio, work with the same dictionary structure as above
+	'''
 	new_stock = str(raw_input('Company Name: '))
 	new_symbol = str(raw_input('Symbol: '))
 	num_share = raw_input('Number of stocks purchased: ')
@@ -83,7 +92,9 @@ def add_stock(dict):
 
 
 def del_stock(dict):
-#Function to delete stock from portfolio
+	'''
+	Function to delete stock from portfolio
+	'''
 	while True:
 		del_stock = raw_input('Which company have you sold? ')
 		if del_stock not in dict:
@@ -139,8 +150,26 @@ def delete_file():
 			print 'Please repeat what you want to do'
 
 
+def print_file():
+	'''
+	Print .txt files in folder
+	'''
+	pathname = os.path.dirname(sys.argv[0])
+	for file in os.listdir(os.path.abspath(pathname)):
+		if file.endswith(".txt"):
+			print file
+
+
 def file_manager():
+	'''
+	Manages files
+	'''
 	while True:
+		print ''
+		print 'These are your current stock files:'
+		print ''
+		print_file()
+		print ''
 		choice = raw_input('(W)rite a new file, (D)elete an existing one, (U)pload an existing one or (Q)uit: ').upper()
 		if choice == 'U':
 			upload = raw_input('Which file do you want to upload? ')
