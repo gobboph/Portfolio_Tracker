@@ -2,10 +2,18 @@
 
 '''
 Note:
-Problems: 1. if I mess up the symbol I am fucked since it does not find it, it write N/A in the file and then I can not even open the file to fix it;
+Problems: 1. if I mess up the symbol it does not find it, it goes N/A in the file and then I can not even open the file to fix it;
 2. if I add a stock that I already have it deletes the previous entries and replace them with the new ones.
 
 '''
+'''
+Note 2:
+There are 2 versions of ystockquote, the one used here is the version 0.2.4 (which is the one you can get with pip). Version 0.2.5 is the developing
+version which is on github. Functions are given different names and, as it is, this script would not work with the dev version. The changes, though
+are trivial.
+
+'''
+
 
 import string
 from prettytable import PrettyTable
@@ -32,7 +40,7 @@ def dict_from_file(file):
 		dictionary[x[0]].append(round(float(x[2]),1))
 		dictionary[x[0]].append(round(float(x[3]),2))
 		#dictionary[x[0]].append(round(float(x[4]),2))
-		dictionary[x[0]].append(float(ystockquote.get_bid_realtime(x[1])))
+		dictionary[x[0]].append(float(ystockquote.get_price(x[1])))
 		#print stocks[x[1]]
 	f.close()
 	return dictionary
@@ -81,7 +89,7 @@ def add_stock(dict):
 	new_stock = str(raw_input('Company Name: '))
 	new_symbol = str(raw_input('Symbol: '))
 	num_share = raw_input('Number of stocks purchased: ')
-	purch_price = ystockquote.get_bid_realtime(new_symbol) #raw_input('Purchase Price: ')
+	purch_price = ystockquote.get_price(new_symbol) #raw_input('Purchase Price: ')
 	latest_price = purch_price #raw_input('Latest Price: ')
 	dict[new_stock]=[]
 	dict[new_stock].append(new_stock)
@@ -108,7 +116,7 @@ def del_stock(dict):
 def update_price(dict):
 	print 'Updating portfolio...'
 	for key in dict:
-		dict[key][4] = ystockquote.get_bid_realtime(dict[key][1])
+		dict[key][4] = ystockquote.get_price(dict[key][1])
 
 
 def create_file():
@@ -131,7 +139,7 @@ def delete_file():
 				break
 			else:
 				print ''
-				print 'The file does not exists'
+				print 'The file does not exist'
 				print ''
 				redo = raw_input('(R)e-type or (H)appy this way and get out? ').upper()
 				if redo == 'R':
