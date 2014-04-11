@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 
 '''
-Note:
-Problems: 1. if I mess up the symbol it does not find it, it goes N/A in the file and then I can not even open the file to fix it;
+Note 1:
+Problems: 1. The symbol needs to be instered precisely, otherwise the program does not find it and writes N/A in the .txt file,
+which needs to be opened manually in order to fix the problem.;
 2. if I add a stock that I already have it deletes the previous entries and replace them with the new ones.
 
-'''
-'''
 Note 2:
-There are 2 versions of ystockquote, the one used here is the version 0.2.4 (which is the one you can get with pip). Version 0.2.5 is the developing
-version which is on github. Functions are given different names and, as it is, this script would not work with the dev version. The changes, though
-are trivial.
+There are two versions of ystockquote, the one used here is the version 0.2.4 (which is the one you can get with pip).
+Version 0.2.5 is the developing version which is on github. Functions are given different names and, as it is,
+this script would not work with the dev version. The changes, though are trivial.
 
 '''
 
@@ -22,13 +21,13 @@ import sys
 import ystockquote
 
 
-# !!!DEFINING RELEVANT FUNCTIONS!!!
 
 def dict_from_file(file):
 	'''
 	This function reads from a file and writes a dictionary from it.
-	The file needs to have on each line the structure: name of the company, title, number of shares, purchase price, latest price
-	ONLY SEPARATED BY A COMMA
+	The file needs to have on each line the structure:
+	name of the company, title, number of shares, purchase price, latest price.
+	Separated by a comma
 	'''
 	dictionary = {}
 	f = open(file,'r')
@@ -114,12 +113,18 @@ def del_stock(dict):
 
 
 def update_price(dict):
+	'''
+	Updates portfolio with new prices
+	'''
 	print 'Updating portfolio...'
 	for key in dict:
 		dict[key][4] = ystockquote.get_price(dict[key][1])
 
 
 def create_file():
+	'''
+	Creates a new .txt file
+	'''
 	print 'Creating a new text file...'
 	name = raw_input('Name of file: ')+'.txt'
 	new_file = open(name,'a')
@@ -128,6 +133,9 @@ def create_file():
 
 
 def delete_file():
+	'''
+	Deletes a .txt file
+	'''
 	while True:
 		file_name = raw_input('Which file do you want to delete? ')+'.txt'
 		sure = raw_input('Are you sure you want to delete the file? (Y/N) ').upper()
@@ -203,10 +211,28 @@ def file_manager():
 			print ''
 
 
+def write_new_line(file):
+	'''
+	This function writes a new line in the file with the info for the portfolio. It will substitute add_stock
+	'''
+	new_stock = str(raw_input('Company Name: '))
+	new_symbol = str(raw_input('Symbol: '))
+	num_share = raw_input('Number of stocks purchased: ')
+	purch_price = raw_input('Purchase Price: ')
+	latest_price = raw_input('Latest Price: ')
+	f = open(file,'a')
+	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
+	f.close()
 
-# !!!MAIN!!!
+
+def test_getMarketData():
+	assert 0<float(ystockquote.get_price('GOOG'))<10000
+
 
 def main():
+	'''
+	Main function
+	'''
 	upload = file_manager()
 	while True:
 		stocks = dict_from_file(upload)
@@ -225,26 +251,16 @@ def main():
 			update_price(stocks)
 			write_dict_to_file(stocks,upload)
 		elif UpDate == 'M':
-			break
+			upload = file_manager()
 		elif UpDate == 'Q':
 			exit()
 		else:
 			print ''
 			print 'Sorry, I did not understand what you want to do, here are your options again.'
-while True:
+
+
+
+if __name__ == "__main__":
 	main()
 
-
-#Functions I do not seem to use at the moment
-
-def write_new_line(file):
-#This function writes a new line in the file with the info for the portfolio. It will substitute add_stock
-	new_stock = str(raw_input('Company Name: '))
-	new_symbol = str(raw_input('Symbol: '))
-	num_share = raw_input('Number of stocks purchased: ')
-	purch_price = raw_input('Purchase Price: ')
-	latest_price = raw_input('Latest Price: ')
-	f = open(file,'a')
-	f.write(new_stock+','+new_symbol+','+num_share+','+purch_price+','+latest_price+'\n')
-	f.close()
 
